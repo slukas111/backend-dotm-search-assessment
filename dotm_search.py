@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 #importation
 
+import os
 import sys
 import argparse
 import zipfile
