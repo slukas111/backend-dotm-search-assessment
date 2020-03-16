@@ -1,12 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #importation
+"""
+Given a directory path, search all files in the path for a given text string
+within the 'word/document.xml' section of a MSWord .dotm file.
+"""
+__author__ = "Sasha Lukas"
 
 import os
 import sys
 import zipfile
 import argparse
 DOC_FILENAME = 'word/document.xml'
+
+
 
 def find_text_zipfile(z, search_text, full_path):
     with z.open(DOC_FILENAME) as doc:
