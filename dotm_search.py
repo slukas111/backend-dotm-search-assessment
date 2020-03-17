@@ -1,12 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #importation
+"""
+Given a directory path, search all files in the path for a given text string
+within the 'word/document.xml' section of a MSWord .dotm file.
+"""
+__author__ = "Sasha Lukas"
+"""reviewed class video, contacted stew to refactor"""
 
 import os
 import sys
 import zipfile
 import argparse
 DOC_FILENAME = 'word/document.xml'
+
+
 
 def find_text_zipfile(z, search_text, full_path):
     with z.open(DOC_FILENAME) as doc:
@@ -15,7 +23,7 @@ def find_text_zipfile(z, search_text, full_path):
     text_location = xml_text.find(search_text)
     if text_location >= 0:
         print('Match found in file {}'.format(full_path))
-        print('     ...' + xml_text[text_location-40:text_location] + '...')
+        print('     ...' + xml_text[text_location-40:text_location+40] + '...')
         return True
     return False
 
@@ -24,7 +32,7 @@ def create_parser():
     parser.add_argument('--dir', help='directory to find dotm files', default='.')
     parser.add_argument('text', help='find text')
     return parser
-
+"""setting to the current directory if no directory passed in"""
 
 def main():
     parser = create_parser()
